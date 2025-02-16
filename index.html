@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#ff6b6b">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>For Parinita ❤️</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.10/css/weather-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+</head>
+<body>
+    <div class="weather-widget">
+        <div class="weather-location">
+            <div class="weather-card" id="berlinWeather">
+                <h3>Berlin 🇩🇪</h3>
+                <div class="weather-info"></div>
+                <div class="time-info"></div>
+            </div>
+            <div class="weather-card" id="santaClaraWeather">
+                <h3>Santa Clara 🇺🇸</h3>
+                <div class="weather-info"></div>
+                <div class="time-info"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Dear Parinita <span class="heart">❤️</span></h1>
+        <p class="from-text">From Raunak, with love 💝</p>
+        <p>Even though we're miles apart, you make every day special. Would you join me for a virtual date? Here are some ideas I've planned for us:</p>
+
+        <div class="countdown-section">
+            <h2>Next Date Countdown 💕</h2>
+            <div id="countdown">
+                <div class="countdown-item">
+                    <span id="days">00</span>
+                    <label>Days</label>
+                </div>
+                <div class="countdown-item">
+                    <span id="hours">00</span>
+                    <label>Hours</label>
+                </div>
+                <div class="countdown-item">
+                    <span id="minutes">00</span>
+                    <label>Minutes</label>
+                </div>
+                <div class="countdown-item">
+                    <span id="seconds">00</span>
+                    <label>Seconds</label>
+                </div>
+            </div>
+            <button class="virtual-hug-btn" onclick="sendVirtualHug()">
+                Send Virtual Hug 🤗
+                <div class="hug-animation"></div>
+            </button>
+        </div>
+
+        <div class="calendar-section">
+            <h2>Our Date Calendar 📅</h2>
+            <div id="calendar"></div>
+            <div class="video-call-buttons">
+                <button onclick="window.open('https://meet.google.com/new')" class="call-btn google-meet">
+                    <img src="https://www.gstatic.com/meet/google_meet_horizontal_wordmark_2020q4_1x_icon_124_40_2373e79660dabbf194273d27aa7ee1f5.png" alt="Google Meet">
+                    Start Meet
+                </button>
+            </div>
+        </div>
+
+        <div class="date-options">
+            <div class="date-option">
+                <div class="date-header" onclick="toggleSection('movies')">
+                    🎬 Movie Night Together <span class="expand-icon">+</span>
+                </div>
+                <div class="date-content" id="movies">
+                    <ul>
+                        <li>💑 Watch a romantic movie of your choice</li>
+                        <li>💕 Share our favorite scenes together</li>
+                        <li>🌟 Have dinner while watching</li>
+                        <li>🎭 Rate the movie together after</li>
+                        <li>✨ Plan our next movie date</li>
+                    </ul>
+                    <p class="tip">We'll use Teleparty to watch together!</p>
+                </div>
+            </div>
+
+            <div class="date-option">
+                <div class="date-header" onclick="toggleSection('games')">
+                    🎮 Game Time <span class="expand-icon">+</span>
+                </div>
+                <div class="date-content" id="games">
+                    <ul>
+                        <li>❤️ Play our favorite online games</li>
+                        <li>🏰 Try new multiplayer adventures</li>
+                        <li>🎲 Virtual board game night</li>
+                        <li>🌟 Video chat while playing</li>
+                        <li>🎯 Winner gets to choose next date!</li>
+                    </ul>
+                    <p class="tip">I promise to let you win... sometimes! 😉</p>
+                </div>
+            </div>
+
+            <div class="date-option">
+                <div class="date-header" onclick="toggleSection('cooking')">
+                    👩‍🍳 Cook Together <span class="expand-icon">+</span>
+                </div>
+                <div class="date-content" id="cooking">
+                    <ul>
+                        <li>🍝 Choose a recipe we both love</li>
+                        <li>📱 Video call while cooking</li>
+                        <li>🥘 Share cooking tips and tricks</li>
+                        <li>🍽️ Set up a romantic dinner table</li>
+                        <li>📸 Take pictures of our creations</li>
+                    </ul>
+                    <p class="tip">Let's create delicious memories together! 👨‍🍳</p>
+                </div>
+            </div>
+
+            <div class="date-option">
+                <div class="date-header" onclick="toggleSection('stargazing')">
+                    🌟 Virtual Stargazing <span class="expand-icon">+</span>
+                </div>
+                <div class="date-content" id="stargazing">
+                    <ul>
+                        <li>🌙 Use Star Walk app together</li>
+                        <li>⭐ Find constellations in our skies</li>
+                        <li>🌠 Make wishes on shooting stars</li>
+                        <li>🌌 Learn about space together</li>
+                        <li>💫 Plan future stargazing dates</li>
+                    </ul>
+                    <p class="tip">Same stars, different skies, one love! ✨</p>
+                </div>
+            </div>
+
+            <div class="date-option">
+                <div class="date-header" onclick="toggleSection('art')">
+                    🎨 Creative Time <span class="expand-icon">+</span>
+                </div>
+                <div class="date-content" id="art">
+                    <ul>
+                        <li>✏️ Draw portraits of each other</li>
+                        <li>🖼️ Share our artwork on video call</li>
+                        <li>🎯 Try fun drawing challenges</li>
+                        <li>🌈 Color and paint together</li>
+                        <li>💝 Keep our artwork as memories</li>
+                    </ul>
+                    <p class="tip">Creating masterpieces of love! 🖌️</p>
+                </div>
+            </div>
+
+            <div class="date-option">
+                <div class="date-header" onclick="toggleSection('reading')">
+                    📚 Reading Corner <span class="expand-icon">+</span>
+                </div>
+                <div class="date-content" id="reading">
+                    <ul>
+                        <li>📖 Pick a romantic book together</li>
+                        <li>🗣️ Take turns reading chapters</li>
+                        <li>💭 Share our thoughts and feelings</li>
+                        <li>📝 Write our own story ending</li>
+                        <li>❤️ Create our reading playlist</li>
+                    </ul>
+                    <p class="tip">Every page is better with you! 📖</p>
+                </div>
+            </div>
+
+            <div class="date-option">
+                <div class="date-header" onclick="toggleSection('music')">
+                    🎵 Music & Dance <span class="expand-icon">+</span>
+                </div>
+                <div class="date-content" id="music">
+                    <ul>
+                        <li>🎶 Create our special playlist</li>
+                        <li>💃 Have a virtual dance party</li>
+                        <li>🎤 Karaoke night together</li>
+                        <li>💝 Dedicate songs to each other</li>
+                        <li>🌙 End the night with our song</li>
+                    </ul>
+                    <p class="tip">Dancing to the rhythm of our hearts! 🎵</p>
+                </div>
+            </div>
+
+            <div class="date-option special-memories">
+                <div class="date-header" onclick="toggleSection('memories')">
+                    📸 Our Special Memories <span class="expand-icon">+</span>
+                </div>
+                <div class="date-content" id="memories">
+                    <div class="photo-gallery">
+                        <div class="memory-box">
+                            <div class="memory-date">First Date ❤️</div>
+                            <div class="memory-text">"The day I knew you were the one"</div>
+                        </div>
+                        <div class="memory-box">
+                            <div class="memory-date">Our Adventures 🌟</div>
+                            <div class="memory-text">"Every moment with you is magical"</div>
+                        </div>
+                        <div class="memory-box">
+                            <div class="memory-date">Special Days 💝</div>
+                            <div class="memory-text">"Creating beautiful memories together"</div>
+                        </div>
+                    </div>
+                    <p class="tip">Our journey together is filled with beautiful moments! 💖</p>
+                </div>
+            </div>
+
+            <div class="date-option">
+                <div class="date-header" onclick="toggleSection('future')">
+                    💫 Future Plans <span class="expand-icon">+</span>
+                </div>
+                <div class="date-content" id="future">
+                    <ul>
+                        <li>✈️ Plan our next trip together</li>
+                        <li>🏠 Dream about our future home</li>
+                        <li>🌅 Share our bucket list</li>
+                        <li>💑 Talk about our dreams</li>
+                        <li>💫 Make plans for tomorrow</li>
+                    </ul>
+                    <p class="tip">Building our future, one dream at a time! 🌟</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="diary-section">
+            <h2>Our Digital Diary</h2>
+            <div class="diary-input">
+                <textarea placeholder="Write your thoughts..."></textarea>
+                <button class="add-entry-btn">Add Entry</button>
+            </div>
+            <div id="diaryEntries"></div>
+        </div>
+
+        <div class="virtual-gifts">
+            <h2>Virtual Gifts 🎁</h2>
+            <div class="gift-grid">
+                <div class="gift-item" data-gift-type="flower">
+                    <div class="gift-icon">🌹</div>
+                    <span>Send a Rose</span>
+                </div>
+                <div class="gift-item" data-gift-type="teddy">
+                    <div class="gift-icon">🧸</div>
+                    <span>Send Teddy</span>
+                </div>
+                <div class="gift-item" data-gift-type="star">
+                    <div class="gift-icon">⭐</div>
+                    <span>Send Star</span>
+                </div>
+                <div class="gift-item" data-gift-type="chocolate">
+                    <div class="gift-icon">🍫</div>
+                    <span>Send Chocolate</span>
+                </div>
+                <div class="gift-item" data-gift-type="kiss">
+                    <div class="gift-icon">💋</div>
+                    <span>Send Kiss</span>
+                </div>
+                <div class="gift-item" data-gift-type="hug">
+                    <div class="gift-icon">🤗</div>
+                    <span>Send Hug</span>
+                </div>
+            </div>
+            <div id="animation-container"></div>
+        </div>
+
+        <div class="love-quote">
+            "Distance means so little when someone means so much" 💕
+        </div>
+
+        <button id="dateButton" class="btn">Click for a message from my heart ❤️</button>
+        <p id="response"></p>
+    </div>
+
+    <div class="music-container">
+        <div class="music-title">
+            <span class="music-note">🎵</span>
+            Now Playing: Our Song - Perfect by Ed Sheeran
+        </div>
+        <audio id="backgroundMusic" loop>
+            <source src="perfect.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+    <div class="hearts-background"></div>
+    <script src="script.js"></script>
+    <script src="features.js"></script>
+</body>
+</html>
